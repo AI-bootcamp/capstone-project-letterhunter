@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>LETTERHUNTER</title>
+    <!-- ربط ملفات الستايل والجافاسكربت عبر Flask -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='images_icon/favicon-16x16.png') }}" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <h1>LETTERHUNTER</h1>
+        <p>اعثر على شيء يبدأ بالحرف الذي اخترته!</p>
+    </header>
+
+    <div class="game-container">
+        <h2>الحرف المختار:</h2>
+        <div id="selectedLetterBox">
+            <span id="selectedLetter">لا شيء</span>
+        </div>
+        
+        <button id="randomLetterBtn">اختر حرفاً عشوائياً</button>
+
+        <div class="capture-container">
+            <h2>التقط صورة للشيء الذي يبدأ بالحرف المحدد</h2>
+            <button id="startCaptureBtn">ابدأ التقاط</button>
+            <div id="cameraFeed"></div>
+            <div id="feedback"></div>
+        </div>
+    </div>
+
+    <!-- لا تكرر script.js مرتين. استخدم نسخة واحدة صحيحة -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

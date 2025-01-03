@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LETTERHUNTER</title>
+    <!-- ربط ملفات الـCSS والـJS عبر Flask -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+    <!-- الأيقونة -->
+    <link rel="icon" href="{{ url_for('static', filename='images_icon/صائد الأحرف (1).png') }}" type="image/x-icon">
+    
+    <!-- كود التحكّم بالزر "ابدأ اللعب" -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const startGameBtn = document.getElementById('startGameBtn');
+            startGameBtn.addEventListener('click', function() {
+                const userName = document.getElementById('nameInput').value;
+                const errorModal = document.getElementById('errorModal');
+                
+                if (userName) {
+                    // إذا أدخل المستخدم اسمًا، انتقل لمسار /game في Flask
+                    window.location.href = "/Game";
+                } else {
+                    // Show the error modal
+                    errorModal.style.display = 'block';
+                    // Hide the modal after 3 seconds
+                    setTimeout(function() {
+                        errorModal.style.display = 'none';
+                    }, 3000);
+                }
+            });
+        });
+    </script>
+
+    <style>
+        /* Error Modal Styling */
+        .error-modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .error-modal img {
+            width: 100px;  /* Adjust the size as needed */
+            height: 100px;
+            margin-right: 10px;
+        }
+        .error-modal span {
+            display: inline-block;
+            vertical-align: top;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>مرحباً بك في لعبة LETTERHUNTER!</h1>
+        <p>ادخل اسمك وابدأ في لعب اللعبة الممتعة لاكتشاف الأشياء التي تبدأ بالحروف الأبجدية العربية!</p>
+    </header>
+
+    <div class="intro-container">
+        <!-- Adding an interactive image with hover effect -->
+        <img id="gameImage" src="{{ url_for('static', filename='images_icon/صائد الأحرف (1).png') }}" alt="Pirate kids">
+        
+        <h2>كيف تلعب اللعبة؟</h2>
+        <p>في هذه اللعبة، سيختار الحاسوب حرفاً عشوائيًا من الحروف العربية، وعليك العثور على شيء يبدأ بذلك الحرف!</p>
+        
+        <!-- حقل اسم المستخدم -->
+        <label for="nameInput">أدخل اسمك:</label>
+        <input type="text" id="nameInput" placeholder="اسمك هنا">
+        
+        <!-- زر بدء اللعبة -->
+        <button id="startGameBtn">ابدأ اللعب</button>
+    </div>
+
+    <!-- Error Modal with Image -->
+    <div class="error-modal" id="errorModal">
+        <img src="{{ url_for('static', filename='images_icon/pirate kids.jpg') }}" alt="صائد الأحرف">
+        <span>قبل أن تبدا أيها القرصان الصغير عرف بنفسك !</span>
+    </div>
+</body>
+</html>

@@ -1,0 +1,217 @@
+
+body {
+    font-family: 'Comic Sans MS', sans-serif; /* Fun, kid-friendly font */
+    background-color: #e0f7fa; /* Soft light blue background */
+    text-align: center;
+    padding: 20px;
+    direction: rtl;
+    /* بدلاً من المسار المطلق، يُفضّل وضع الصورة في مجلد داخل المشروع واستخدام المسار النسبي
+       مثال: background-image: url("deployment/images_icon/LetterHunter1.webp"); */
+    background-image: url("deployment/images_icon/LetterHunter1.webp");
+    background-size: cover;
+    background-position: center;
+}
+
+header {
+    background-color: #ffeb3b; /* Bright yellow header */
+    color: #fff;
+    padding: 30px;
+    font-size: 36px;
+    font-weight: bold;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 30px;
+    position: relative;
+    animation: rainbow 3s linear infinite; /* ألوان قوس قزح على النص */
+}
+
+header h1 {
+    font-size: 48px;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    margin: 0;
+}
+
+header p {
+    font-size: 24px;
+    margin-top: 10px;
+}
+
+/* قوس قزح على الـHeader */
+@keyframes rainbow {
+  0%   { background-color: #ffeb3b; }
+  20%  { background-color: #f39c12; }
+  40%  { background-color: #e74c3c; }
+  60%  { background-color: #8e44ad; }
+  80%  { background-color: #3498db; }
+  100% { background-color: #2ecc71; }
+}
+
+.intro-container {
+    margin-top: 40px;
+    padding: 30px;
+    background-color: rgba(255, 255, 255, 0.8); /* Light white background with transparency */
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 80%;
+    margin: 0 auto;
+    transition: transform 0.3s;
+}
+
+.intro-container:hover {
+    transform: scale(1.05); /* Slight scale-up when hovering the intro container */
+}
+
+#gameImage {
+    width: 100%;
+    max-width: 450px;
+    margin-top: 20px;
+    border-radius: 10px;
+    transition: transform 0.5s;
+}
+
+#gameImage:hover {
+    transform: scale(1.1); /* Make the image grow on hover */
+}
+
+h2 {
+    font-size: 28px;
+    margin-top: 20px;
+    color: #333;
+}
+
+label#nameLabel {
+    font-weight: bold;
+    display: block;
+    margin-top: 20px;
+    font-size: 20px;
+    animation: bounce 2s infinite; /* هزة لطيفة */
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+input[type="text"] {
+    padding: 12px;
+    margin-top: 10px;
+    font-size: 18px;
+    width: 80%;
+    max-width: 300px;
+    border-radius: 10px;
+    border: 2px solid #4CAF50; /* Fun green border */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+input[type="text"]:focus {
+    transform: scale(1.05); /* Slight scale effect when the input field is focused */
+    border-color: #f39c12; /* Yellow color for the border on focus */
+}
+
+button {
+    padding: 15px 30px;
+    background-color: #f39c12;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s, transform 0.2s;
+    margin-top: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* زرّات أكثر مرحًا */
+.fun-button {
+    animation: shake 1.5s infinite;
+}
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  20% { transform: translateX(-3px); }
+  40% { transform: translateX(3px); }
+  60% { transform: translateX(-3px); }
+  80% { transform: translateX(3px); }
+  100% { transform: translateX(0); }
+}
+
+button:hover {
+    background-color: #e67e22; /* Hover effect for button */
+    transform: scale(1.1); /* Button grows when hovered */
+}
+
+button:active {
+    transform: scale(0.95); /* Shrink effect when clicked */
+}
+
+/* Floating animation for the image on main page */
+.game-img {
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* =============== */
+/* خصائص صفحة اللعبة */
+/* =============== */
+
+.game-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#selectedLetterBox {
+    font-size: 2rem;
+    margin: 10px 0;
+    background-color: #fff;
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px #ccc;
+}
+
+.capture-container {
+    margin-top: 20px;
+}
+
+/* الرسالة التشجيعية */
+.hidden {
+    display: none;
+}
+
+.reward-message {
+    margin-top: 20px;
+    padding: 20px;
+    border: 2px dashed #FFD700;
+    background-color: #FFF8DC;
+    border-radius: 10px;
+    color: #DDA520;
+    font-weight: bold;
+    animation: twinkle 2s infinite;
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    box-shadow: 0 0 10px #FFD700;
+  }
+  50% {
+    box-shadow: 0 0 20px #FFD700;
+  }
+}
+
