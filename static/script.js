@@ -46,7 +46,7 @@ function startCamera(letter) {
             video.srcObject = stream;
             video.play();
 
-            // Here, you can add the object detection logic if needed
+            // Here, you can add the object detection
         })
         .catch((error) => {
             console.error('Error accessing webcam:', error);

@@ -5,8 +5,7 @@ body {
     text-align: center;
     padding: 20px;
     direction: rtl;
-    /* بدلاً من المسار المطلق، يُفضّل وضع الصورة في مجلد داخل المشروع واستخدام المسار النسبي
-       مثال: background-image: url("deployment/images_icon/LetterHunter1.webp"); */
+    
     background-image: url("deployment/images_icon/LetterHunter1.webp");
     background-size: cover;
     background-position: center;
@@ -85,7 +84,7 @@ label#nameLabel {
     display: block;
     margin-top: 20px;
     font-size: 20px;
-    animation: bounce 2s infinite; /* هزة لطيفة */
+    animation: bounce 2s infinite; 
 }
 
 @keyframes bounce {
