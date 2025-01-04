@@ -1,21 +1,21 @@
-// List of Arabic letters
+// قائمة بالحروف العربية التي ستختار بشكل عشوائي
 const arabicLetters = ['أ', 'ب', 'ت', 'ث', 'ج', 'ح', 'خ', 'د', 'ذ', 'ر', 'ز', 'س', 'ش', 'ص', 'ض', 'ط', 'ظ', 'ع', 'غ', 'ف', 'ق', 'ك', 'ل', 'م', 'ن', 'هـ', 'و', 'ي'];
 
-// Select random letter
+// اختيار حرف عشوائي
 function getRandomLetter() {
     const randomIndex = Math.floor(Math.random() * arabicLetters.length);
     return arabicLetters[randomIndex];
 }
 
-// Function to animate random letters quickly
+// انيميشن حروف عشوائية
 function animateRandomLetters() {
-    let iterations = 10; // Number of iterations for the animation
+    let iterations = 10; // عدد التكرارات العشوائية لتحديد حرف عشوائي
     let letterInterval = setInterval(function() {
         const randomLetter = getRandomLetter();
         document.getElementById('selectedLetter').innerText = randomLetter;
-    }, 100); // Update every 100ms to create the effect of quickly changing letters
+    }, 100); // تحديد حرف عشواؐي على كل 0.1 ثانية
 
-    // Stop the animation after a short period and display the final letter
+    // وقف الانميشين و اظهر الحرف العشوائي
     setTimeout(function() {
         clearInterval(letterInterval); // Stop the interval
         const finalLetter = getRandomLetter(); // Get the final letter
@@ -46,7 +46,7 @@ function startCamera(letter) {
             video.srcObject = stream;
             video.play();
 
-            // Here, you can add the object detection
+            // Computer Vision detection put it Here my friendo :)
         })
         .catch((error) => {
             console.error('Error accessing webcam:', error);

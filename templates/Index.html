@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LETTERHUNTER</title>
+    <meta charset="UTF-8">  <!-- حروف العربية -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- حجم الصفحة -->
+
+
+    <title>صائد الحروف</title>
     <!-- ربط ملفات الـCSS والـJS عبر Flask -->
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 
     <!-- الأيقونة -->
-    <link rel="icon" href="{{ url_for('static', filename='images_icon/صائد الأحرف (1).png') }}" type="image/x-icon">
+    <link rel="icon" href="{{ url_for('static', filename='images_icon/صائد الحروف11.jpg') }}" type="image/x-icon">
     
     <!-- كود التحكّم بالزر "ابدأ اللعب" -->
     <script>
@@ -23,9 +25,9 @@
                     // إذا أدخل المستخدم اسمًا، انتقل لمسار /game في Flask
                     window.location.href = "/Game";
                 } else {
-                    // Show the error modal
+                    // إذا لم يدخل المستخدم اسمًا، عرض النافذة الخطاء
                     errorModal.style.display = 'block';
-                    // Hide the modal after 3 seconds
+                    // اغلق النافذة بعد 3 ثوان
                     setTimeout(function() {
                         errorModal.style.display = 'none';
                     }, 3000);
@@ -35,7 +37,7 @@
     </script>
 
     <style>
-        /* Error Modal Styling */
+        /* نافذة الخطاء */
         .error-modal {
             display: none;
             position: fixed;
@@ -50,7 +52,7 @@
             text-align: center;
         }
         .error-modal img {
-            width: 100px;  /* Adjust the size as needed */
+            width: 100px;  /* تحديد عرض الصورة */
             height: 100px;
             margin-right: 10px;
         }
@@ -64,13 +66,13 @@
 </head>
 <body>
     <header>
-        <h1>مرحباً بك في لعبة LETTERHUNTER!</h1>
+        <h1>مرحباً بك في لعبة صائد الحروف</h1>
         <p>ادخل اسمك وابدأ في لعب اللعبة الممتعة لاكتشاف الأشياء التي تبدأ بالحروف الأبجدية العربية!</p>
     </header>
 
     <div class="intro-container">
-        <!-- Adding an interactive image with hover effect -->
-        <img id="gameImage" src="{{ url_for('static', filename='images_icon/صائد الأحرف (1).png') }}" alt="Pirate kids">
+        <!-- اضافة صورة تفاعلية  -->
+        <img id="gameImage" src="{{ url_for('static', filename='images_icon/صائد الأحرف (2).png') }}" alt="صائد الحروف">
         
         <h2>كيف تلعب اللعبة؟</h2>
         <p>في هذه اللعبة، سيختار الحاسوب حرفاً عشوائيًا من الحروف العربية، وعليك العثور على شيء يبدأ بذلك الحرف!</p>
@@ -83,7 +85,7 @@
         <button id="startGameBtn">ابدأ اللعب</button>
     </div>
 
-    <!-- Error Modal with Image -->
+    <!-- نافذة الخطاء الذي سيظهر في حالة عدم ادخال اسم المستخدم -->
     <div class="error-modal" id="errorModal">
         <img src="{{ url_for('static', filename='images_icon/pirate kids.jpg') }}" alt="صائد الأحرف">
         <span>قبل أن تبدا أيها القرصان الصغير عرف بنفسك !</span>
