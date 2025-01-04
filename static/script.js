@@ -9,47 +9,23 @@ function getRandomLetter() {
 
 // انيميشن حروف عشوائية
 function animateRandomLetters() {
-    let iterations = 10; // عدد التكرارات العشوائية لتحديد حرف عشوائي
+    let iterations = 10; // عدد التكرارات العشوائية لتحديد حرف عشوائي
     let letterInterval = setInterval(function() {
         const randomLetter = getRandomLetter();
         document.getElementById('selectedLetter').innerText = randomLetter;
-    }, 100); // تحديد حرف عشواؐي على كل 0.1 ثانية
+    }, 100); // تحديد حرف عشوائي على كل 0.1 ثانية
 
-    // وقف الانميشين و اظهر الحرف العشوائي
+    // وقف الانميشن و اظهر الحرف العشوائي
     setTimeout(function() {
-        clearInterval(letterInterval); // Stop the interval
-        const finalLetter = getRandomLetter(); // Get the final letter
-        document.getElementById('selectedLetter').innerText = finalLetter; // Display final letter
-        startCamera(finalLetter); // Start the camera with the selected letter
-    }, 1500); // Stop after 1.5 seconds
+        clearInterval(letterInterval); // إيقاف التكرار
+        const finalLetter = getRandomLetter(); // الحصول على الحرف النهائي
+        document.getElementById('selectedLetter').innerText = finalLetter; // عرض الحرف النهائي
+        // يمكنك إضافة وظائف إضافية هنا إذا لزم الأمر
+    }, 1500); // التوقف بعد 1.5 ثانية
 }
 
-// Display the selected letter when the button is clicked
+// عرض الحرف المختار عند النقر على الزر
 document.getElementById('randomLetterBtn').addEventListener('click', function() {
-    // Start the random letter animation
+    // بدء انيميشن الحروف العشوائية
     animateRandomLetters();
 });
-
-// Start the camera and detection for the selected letter
-function startCamera(letter) {
-    const video = document.createElement('video');
-    const canvas = document.createElement('canvas');
-    const context = canvas.getContext('2d');
-    const feedbackElement = document.getElementById('feedback');
-    const cameraFeed = document.getElementById('cameraFeed');
-    cameraFeed.innerHTML = '';
-    cameraFeed.appendChild(video);
-
-    // Get the user's webcam
-    navigator.mediaDevices.getUserMedia({ video: true })
-        .then((stream) => {
-            video.srcObject = stream;
-            video.play();
-
-            // Computer Vision detection put it Here my friendo :)
-        })
-        .catch((error) => {
-            console.error('Error accessing webcam:', error);
-            feedbackElement.innerText = 'حدث خطأ عند الوصول إلى الكاميرا.';
-        });
-}
