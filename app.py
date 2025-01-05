@@ -24,9 +24,11 @@ target_classes = []
 found = False
 
 def select_random_letter():
-    global selected_letter, target_classes
+    global selected_letter, target_classes, found
     selected_letter = random.choice(list(vocab_dict.keys()))
-    target_classes = vocab_dict[selected_letter].split(",")  # Assuming objects are comma-separated
+    target_classes = [cls.strip().lower() for cls in vocab_dict[selected_letter].split(",")]  # تنظيف الأسماء وتحويلها إلى حروف صغيرة
+    found = False  # إعادة تعيين حالة العثور عند اختيار حرف جديد
+
 
 def generate_frames():
     global found
@@ -43,12 +45,11 @@ def generate_frames():
         for result in results:
             for box in result.boxes:
                 class_id = int(box.cls)
-                class_name = result.names[class_id]
+                class_name = result.names[class_id].lower()
                 if class_name in target_classes:
                     found = True
                     break
-            if found:
-                break
+
         
         # Show "Correct!!" if found
         if found:
