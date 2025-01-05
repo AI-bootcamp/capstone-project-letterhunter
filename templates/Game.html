@@ -2,35 +2,50 @@
 <html lang="ar">
 <head>
     <meta charset="UTF-8">
-    <!-- ربط ملفات الستايل والجافاسكربت عبر Flask -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>صائد الحروف</title>
+    <!-- Include your CSS file -->
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link rel="icon" href="{{ url_for('static', filename='images_icon/صائد الحروف11.jpg') }}" type="image/x-icon">
 </head>
 <body>
     <header>
         <h1>صائد الحروف</h1>
-        <p>اعثر على شيء يبدأ بالحرف الذي سيظهرلك كن مستعدا للتنافس!</p>
+        <p>اعثر على شيء يبدأ بالحرف الذي سيظهر لك! كن مستعداً للتحدي!</p>
     </header>
 
-    <div class="game-container">
-        <h2>الحرف المختار:</h2>
-        <div id="selectedLetterBox">
-            <span id="selectedLetter">لا شيء</span>
-        </div>
-        
-        <button id="randomLetterBtn">اختر حرفاً عشوائياً</button>
+    <main class="game-container">
+        <!-- Display the selected letter -->
+        <section class="letter-section">
+            <h2>الحرف المختار:</h2>
+            <div id="selectedLetterBox">
+                <span id="selectedLetter">{{ letter }}</span>
+            </div>
+        </section>
 
-        <div class="capture-container">
+        <!-- Video feed and game instructions -->
+        <section class="capture-section">
             <h2>التقط صورة للشيء الذي يبدأ بالحرف المحدد</h2>
-            <button id="startCaptureBtn">ابدأ التقاط</button>
-            
-            <!-- عرض البث المباشر للفيديو المُعالج -->
-            <img src="{{ url_for('video_feed') }}" id="cameraFeed" alt="بث الكاميرا">
-            
-            <div id="feedback"></div>
-        </div>
-    </div>
+            <div class="camera-container">
+                <!-- Live video feed -->
+                <img src="{{ url_for('video_feed') }}" id="cameraFeed" alt="بث الكاميرا">
+            </div>
+            <div id="feedback" class="feedback-box"></div>
+        </section>
 
+        <!-- Button to restart the game -->
+        <section class="game-controls">
+            <button id="restartGameBtn">ابدأ جولة جديدة</button>
+        </section>
+    </main>
+
+    <!-- Include your JavaScript file -->
     <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script>
+        // Event listener for restarting the game
+        document.getElementById('restartGameBtn').addEventListener('click', function() {
+            window.location.href = "{{ url_for('game') }}"; // Reload the game
+        });
+    </script>
 </body>
 </html>
