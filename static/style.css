@@ -1,216 +1,357 @@
-
+/* General Styles */
 body {
-    font-family: 'Comic Sans MS', sans-serif; /* Fun, kid-friendly font */
-    background-color: #e0f7fa; /* Soft light blue background */
-    text-align: center;
-    padding: 20px;
-    direction: rtl;
-    
-    background-image: url("deployment/images_icon/LetterHunter1.webp");
-    background-size: cover;
-    background-position: center;
-}
-
-header {
-    background-color: #ffeb3b; /* Bright yellow header */
-    color: #fff;
-    padding: 30px;
-    font-size: 36px;
-    font-weight: bold;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    margin-bottom: 30px;
-    position: relative;
-    animation: rainbow 3s linear infinite; /* ألوان قوس قزح على النص */
-}
-
-header h1 {
-    font-size: 48px;
-    color: #fff;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     margin: 0;
+    padding: 0;
+    font-family: 'Tajawal', sans-serif;
+    background: linear-gradient(-45deg, blue, #ffe1fd, #fbe7b2, #ffd1dc);
+    background-size: 400% 400%;
+    animation: gradient 30s ease infinite;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-header p {
-    font-size: 24px;
-    margin-top: 10px;
+/* Keyframe Animation */
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
-/* قوس قزح على الـHeader */
-@keyframes rainbow {
-  0%   { background-color: #ffeb3b; }
-  20%  { background-color: #f39c12; }
-  40%  { background-color: #e74c3c; }
-  60%  { background-color: #8e44ad; }
-  80%  { background-color: #3498db; }
-  100% { background-color: #2ecc71; }
+/* Landing Page Layout */
+.landing-page {
+    display: flex;
+    flex-wrap: wrap;
+    background: #fff;
+    border-radius: 30px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    max-width: 1000px;
+    width: 95%;
+    height: 80%;
+    
 }
 
-.intro-container {
-    margin-top: 40px;
-    padding: 30px;
-    background-color: rgba(255, 255, 255, 0.8); /* Light white background with transparency */
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    width: 80%;
-    margin: 0 auto;
-    transition: transform 0.3s;
+/* Left Image Section */
+.image-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
 }
 
-.intro-container:hover {
-    transform: scale(1.05); /* Slight scale-up when hovering the intro container */
+.game-image {
+    max-width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
 }
 
-#gameImage {
-    width: 100%;
-    max-width: 450px;
-    margin-top: 20px;
-    border-radius: 10px;
-    transition: transform 0.5s;
-}
-
-#gameImage:hover {
-    transform: scale(1.1); /* Make the image grow on hover */
-}
-
-h2 {
-    font-size: 28px;
-    margin-top: 20px;
-    color: #333;
-}
-
-label#nameLabel {
+.game-title {
+    font-size: 40px;
     font-weight: bold;
-    display: block;
-    margin-top: 20px;
-    font-size: 20px;
-    animation: bounce 2s infinite; 
+    color: #333;
+    margin: 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
+/* Right Form Section */
+.form-section {
+    flex: 1;
+    background-image: url('/static/images_icon/background 2.PNG');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    border-radius: 25px;
+    color: black;
 }
 
-input[type="text"] {
-    padding: 12px;
-    margin-top: 10px;
+.form-section h2 {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.form-section p {
     font-size: 18px;
-    width: 80%;
-    max-width: 300px;
-    border-radius: 10px;
-    border: 2px solid #4CAF50; /* Fun green border */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+/* Input Field */
+input[type="text"] {
+    padding: 12px 20px; /* Adjusted padding for a better fit */
+    border: 2px solid #000; /* Black border for the outline */
+    border-radius: 30px; /* Rounded corners */
+    outline: none; /* Removes default browser outline */
+    font-size: 18px; /* Larger font size */
+    width: 80%; /* Dynamic width */
+    max-width: 350px; /* Wider field */
+    margin-bottom: 20px; /* Space below */
+    background: #fff; /* White background */
+    color: #000; /* Black text color */
+    text-align: center; /* Centers the input text */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    transition: all 0.3s ease-in-out; /* Smooth transitions */
 }
 
 input[type="text"]:focus {
-    transform: scale(1.05); /* Slight scale effect when the input field is focused */
-    border-color: #f39c12; /* Yellow color for the border on focus */
+    border-color: #ff79b0; /* Pink border on focus */
+    box-shadow: 0 0 10px rgba(255, 121, 176, 0.6); /* Glowing effect */
 }
 
-button {
-    padding: 15px 30px;
-    background-color: #f39c12;
-    color: white;
+/* Start Button */
+.start-button {
+    padding: 10px 80px; /* Adjusted padding for a larger, centered button */
+    font-size: 20px; /* Larger font size */
+    font-weight: bold;
+    color: #fff; /* White text */
+    background: linear-gradient(to right, #ff79b0, #ffacd5); /* Pink gradient */
     border: none;
-    border-radius: 10px;
+    border-radius: 30px; /* Fully rounded corners */
     cursor: pointer;
-    font-size: 18px;
-    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 4px 10px rgba(255, 121, 176, 0.4); /* Subtle shadow */
+    transition: all 0.3s ease-in-out;
+    display: block; /* Ensures it behaves as a block-level element */
+    margin: 0 auto; /* Centers the button horizontally */
+}
+
+.start-button:hover {
+    transform: scale(1.05); /* Slight zoom on hover */
+    box-shadow: 0 6px 12px rgba(255, 121, 176, 0.6); /* Enhanced shadow */
+}
+
+.start-button:active {
+    transform: scale(0.95); /* Slight shrink on click */
+}
+
+/* Form Section Alignment */
+.form-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px; /* Adds uniform spacing between input and button */
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .landing-page {
+        flex-direction: column;
+        height: 100%;
+    }
+
+    .image-section, .form-section {
+        flex: unset;
+        width: 100%;
+    }
+
+    .game-image {
+        width: 100%;
+    }
+}
+
+/* Error Message Styles */
+.error-message {
+    display: none; /* Hidden by default */
+    background-color: rgba(255, 79, 79, 0.8); /* Light red background */
+    color: #fff; /* White text color */
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     margin-top: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    animation: shake 0.5s ease; /* Add a fun shake animation */
 }
 
-/* زرّات أكثر مرحًا */
-.fun-button {
-    animation: shake 1.5s infinite;
-}
-
+/* Shake Animation */
 @keyframes shake {
-  0% { transform: translateX(0); }
-  20% { transform: translateX(-3px); }
-  40% { transform: translateX(3px); }
-  60% { transform: translateX(-3px); }
-  80% { transform: translateX(3px); }
-  100% { transform: translateX(0); }
-}
-
-button:hover {
-    background-color: #e67e22; /* Hover effect for button */
-    transform: scale(1.1); /* Button grows when hovered */
-}
-
-button:active {
-    transform: scale(0.95); /* Shrink effect when clicked */
-}
-
-/* Floating animation for the image on main page */
-.game-img {
-    animation: float 3s ease-in-out infinite;
-}
-
-@keyframes float {
-    0% {
-        transform: translateY(0);
+    0%, 100% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-5px);
     }
     50% {
-        transform: translateY(-10px);
+        transform: translateX(5px);
     }
-    100% {
-        transform: translateY(0);
+    75% {
+        transform: translateX(-5px);
     }
 }
 
-/* =============== */
-/* خصائص صفحة اللعبة */
-/* =============== */
+/* Game */
 
+/* General Styles */
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Tajawal', sans-serif;
+    background: linear-gradient(-45deg, blue, #ffe1fd, #fbe7b2, #ffd1dc);
+    background-size: 400% 400%;
+    animation: gradient 30s ease infinite;
+    height: 100%;
+    overflow-y: auto; /* Allow vertical scrolling */
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Header Section */
+header {
+    text-align: center;
+    color: black;
+    margin-bottom: 20px;
+    padding: 20px 0;
+}
+
+header h1 {
+    font-size: 40px;
+    font-weight: bold;
+    margin: 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+header p {
+    font-size: 18px;
+    margin-top: 10px;
+    color: rgba(13, 13, 13, 0.8);
+}
+
+/* Game Container */
 .game-container {
-    max-width: 600px;
-    margin: 0 auto;
-    background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 15px;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    padding: 5px;
+    max-width: 1000px;
+    width: 100%;
+    margin-bottom: 10px; /* Add spacing at the bottom */
+    text-align: center;
+}
+
+/* Letter Section */
+.letter-section h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
 }
 
 #selectedLetterBox {
-    font-size: 2rem;
-    margin: 10px 0;
-    background-color: #fff;
     display: inline-block;
     padding: 10px 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px #ccc;
-}
-
-.capture-container {
-    margin-top: 20px;
-}
-
-/* الرسالة التشجيعية */
-.hidden {
-    display: none;
-}
-
-.reward-message {
-    margin-top: 20px;
-    padding: 20px;
-    border: 2px dashed #FFD700;
-    background-color: #FFF8DC;
-    border-radius: 10px;
-    color: #DDA520;
+    border: 2px solid #000;
+    border-radius: 30px;
+    background: #ff79b0;
+    color: white;
+    font-size: 30px;
     font-weight: bold;
-    animation: twinkle 2s infinite;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-@keyframes twinkle {
-  0%, 100% {
-    box-shadow: 0 0 10px #FFD700;
-  }
-  50% {
-    box-shadow: 0 0 20px #FFD700;
-  }
+/* Capture Section */
+.capture-section h2 {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 5px;
 }
+
+.camera-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+    padding: 20px;
+    border: 2px dashed #ccc;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.8);
+}
+
+#cameraFeed {
+    max-width: 30%;
+    height: 60%;
+    border-radius: 10px;
+}
+
+/* Feedback Box */
+.feedback-box {
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    background: rgba(255, 121, 176, 0.1);
+    color: #ff79b0;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+/* Game Controls */
+.game-controls {
+    text-align: center;
+}
+
+#restartGameBtn {
+    padding: 12px 40px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+    background: linear-gradient(to right, #ff79b0, #ffacd5);
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(255, 121, 176, 0.4);
+    transition: all 0.3s ease-in-out;
+}
+
+#restartGameBtn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(255, 121, 176, 0.6);
+}
+
+#restartGameBtn:active {
+    transform: scale(0.95);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .game-container {
+        width: 95%;
+        padding: 20px;
+    }
+
+    #selectedLetterBox {
+        font-size: 24px;
+    }
+
+    #restartGameBtn {
+        font-size: 18px;
+        padding: 10px 30px;
+    }
+}
+
 
