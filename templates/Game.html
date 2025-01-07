@@ -7,6 +7,19 @@
     <!-- Include your CSS file -->
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link rel="icon" href="{{ url_for('static', filename='images_icon/صائد الحروف11.jpg') }}" type="image/x-icon">
+    <script>
+        // Update the timer dynamically
+        function updateTimer() {
+            fetch("{{ url_for('update_timer') }}")
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById("timerBox").textContent = data.remaining_time + " ثانية";
+                });
+        }
+
+        // Start timer updates every second
+        setInterval(updateTimer, 1000);
+    </script>
 </head>
 <body>
     <header>
@@ -15,10 +28,16 @@
     </header>
 
     <main class="game-container">
+        <!-- Timer display -->
+        <section class="timer-section">
+            <h2>الوقت المتبقي:</h2>
+            <div id="timerBox" class="info-box">{{ timer }} ثانية</div>
+        </section>
+
         <!-- Display the selected letter -->
         <section class="letter-section">
             <h2>الحرف المختار:</h2>
-            <div id="selectedLetterBox">
+            <div id="selectedLetterBox" class="info-box">
                 <span id="selectedLetter">{{ letter }}</span>
             </div>
         </section>
@@ -36,6 +55,7 @@
         <!-- Button to restart the game -->
         <section class="game-controls">
             <button id="restartGameBtn">ابدأ جولة جديدة</button>
+            <button id="showResultsBtn" class="show-results-button">اظهر نتائجي</button>
         </section>
     </main>
 
@@ -45,6 +65,11 @@
         // Event listener for restarting the game
         document.getElementById('restartGameBtn').addEventListener('click', function() {
             window.location.href = "{{ url_for('game') }}"; // Reload the game
+        });
+
+        // Event listener for showing statistics
+        document.getElementById('showResultsBtn').addEventListener('click', function () {
+            window.location.href = "{{ url_for('results') }}"; // Navigate to the results page
         });
     </script>
 </body>
