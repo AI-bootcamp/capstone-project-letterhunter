@@ -39,6 +39,20 @@
         </section>
     </main>
 
+    <!-- Add this button in the game-controls section -->
+    <section class="game-controls">
+        <button id="restartGameBtn">ابدأ جولة جديدة</button>
+        <button id="showResultsBtn" class="show-results-button">اظهر نتائجي</button>
+    </section>
+
+    <script>
+    // Event listener for showing results
+        document.getElementById('showResultsBtn').addEventListener('click', function () {
+            window.location.href = "{{ url_for('results') }}"; // Navigate to the results page
+        });
+    </script>
+
+
     <!-- Include your JavaScript file -->
     <script src="{{ url_for('static', filename='script.js') }}"></script>
     <script>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نتائجي</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='images_icon/صائد الحروف11.jpg') }}" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <h1>نتائجك يا {{ user_name }}</h1>
+    </header>
+
+    <main class="results-container">
+        <section class="results-table">
+            <h2>لوحة النتائج</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>الحرف</th>
+                        <th>عدد مرات الظهور</th>
+                        <th>الإجابات الصحيحة</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for letter, appear_count, correct_count in results %}
+                    <tr>
+                        <td>{{ letter }}</td>
+                        <td>{{ appear_count }}</td>
+                        <td>{{ correct_count }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+    </main>
+</body>
+</html>

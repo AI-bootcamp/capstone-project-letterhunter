@@ -355,3 +355,64 @@ header p {
 }
 
 
+/* Button */
+.show-results-button {
+    padding: 12px 40px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+    background: linear-gradient(to right, #6ac174, #4c8bf5); /* New gradient */
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(76, 139, 245, 0.4);
+    transition: all 0.3s ease-in-out;
+    margin-top: 10px;
+}
+
+.show-results-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(76, 139, 245, 0.6);
+}
+ /* results */
+ .results-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    max-width: 800px;
+    width: 90%;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.results-table h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th, table td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+table th {
+    background: #f4f4f4;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+table td {
+    font-size: 16px;
+}
