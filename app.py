@@ -209,8 +209,14 @@ def results():
     if filtered_df.empty:
         return render_template('Results.html', user_name=user_name, results=[], error="لا توجد بيانات لهذا المستخدم.")
     letter_counts = filtered_df['Letter'].value_counts().to_dict()
-    correct_count = filtered_df['Detect'].sum()
-    results = [(letter, count, correct_count) for letter, count in letter_counts.items()]
+    correct_counts = filtered_df[filtered_df['Detect'] == True].groupby('Letter').size().to_dict()
+    
+    # Prepare the results
+    results = []
+    for letter, count in letter_counts.items():
+        correct_count = correct_counts.get(letter, 0)  # Get the correct count for the letter, default to 0 if not found
+        results.append((letter, count, correct_count))
+    
     return render_template('Results.html', user_name=user_name, results=results)
 
 
