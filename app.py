@@ -82,6 +82,9 @@ def analyze_player(player_name):
 
     return filtered_letters
 
+print(analyze_player('شادن'))
+
+
 def generate_dashboard_data():
     try:
         # Load the game history
@@ -198,25 +201,49 @@ def update_timer():
     remaining_time = max(0, timer_duration - int(elapsed_time))
     return jsonify({"remaining_time": remaining_time})
 
-@app.route('/Results')
+@app.route('/results')
 def results():
-    """Render the results page."""
     global player_name
+    # Load the Excel file
+    try:
+        history_df = pd.read_excel('history.xlsx')
+    except FileNotFoundError:
+        history_df = pd.DataFrame(columns=['Name', 'Letter', 'Detect', 'Time'])
+
+    # Rename columns to standard format
+    history_df.rename(
+        columns={
+            "Name": "name",
+            "Letter": "letter",
+            "Detect": "detect",
+            "Time": "time"
+        },
+        inplace=True,
+    )
+
+    # Get the current user's name from the request
     user_name = player_name
-    history_df = pd.read_excel('history.xlsx')
-    filtered_df = history_df[history_df['Name'] == user_name]
-    if filtered_df.empty:
-        return render_template('Results.html', user_name=user_name, results=[], error="لا توجد بيانات لهذا المستخدم.")
-    letter_counts = filtered_df['Letter'].value_counts().to_dict()
-    correct_counts = filtered_df[filtered_df['Detect'] == True].groupby('Letter').size().to_dict()
-    
-    # Prepare the results
-    results = []
-    for letter, count in letter_counts.items():
-        correct_count = correct_counts.get(letter, 0)  # Get the correct count for the letter, default to 0 if not found
-        results.append((letter, count, correct_count))
-    
-    return render_template('Results.html', user_name=user_name, results=results)
+
+    # Filter the data by user name
+    filtered_df = history_df[history_df['name'] == user_name]
+
+    # Extract the required attributes
+    letter_counts = filtered_df['letter'].value_counts().to_dict()
+    correct_count = filtered_df[filtered_df['detect'] == True].shape[0]
+
+    # Analyze the player's mistakes
+    player_mistakes = analyze_player(user_name)
+
+    # Prepare data for rendering
+    results = [(letter, count, correct_count) for letter, count in letter_counts.items()]
+
+    return render_template(
+        'Results.html',
+        user_name=user_name,
+        results=results,
+        player_mistakes=player_mistakes
+    )
+
 
 
 @app.route('/leaderboard')

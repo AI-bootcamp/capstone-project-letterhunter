@@ -357,7 +357,7 @@ header p {
 
 /* Results Button */
 .show-results-button {
-    padding: 12px 40px;
+    padding: 10px 10px;
     font-size: 20px;
     font-weight: bold;
     color: #fff;
@@ -368,6 +368,7 @@ header p {
     box-shadow: 0 4px 10px rgba(76, 139, 245, 0.4);
     transition: all 0.3s ease-in-out;
     margin-top: 10px;
+    margin-bottom: 5px;
 }
 
 .show-results-button:hover {
@@ -571,7 +572,7 @@ body {
 
 /* Button */
 .button-container {
-    margin-top: 20px;
+    margin-top: 2px;
 }
 
 .start-button {
@@ -594,3 +595,18 @@ body {
     transform: scale(0.95);
 }
 
+
+/* analyzed_player string print design */
+.mistakes-analysis {
+    margin-top: 2px;
+    margin-bottom:2px;
+    padding: 2px;
+    font-weight: bold;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 20px;
+}
+
+.mistakes span.mistakes {
+    font-weight: bold;
+}

@@ -32,6 +32,14 @@
                     {% endfor %}
                 </tbody>
             </table>
+                <!-- Mistakes Analysis Section -->
+    <div class="mistakes-analysis">
+        {% if player_mistakes %}
+            <p>عندك أغلاط كثيرة في هذه الأحرف: <span class="mistakes">{{ player_mistakes | join(", ") }}</span></p>
+        {% else %}
+            <p>أحسنت صنعا</p>
+        {% endif %}
+    </div>
         </section>
     </main>
 
