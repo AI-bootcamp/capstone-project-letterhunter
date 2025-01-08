@@ -1,19 +1,151 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/C-PmOpVZ)
-# Capstone Project Evaluation Rubric
+# 🏹 Letter Hunter: Arabic Learning Game
 
-This rubric outlines the grading criteria for the final capstone project. Each aspect of the project is evaluated on a scale from 0 to 5, where higher scores indicate better performance. The project will be assessed on the quality of its documentation, organization, presentation, functionality, and deployment.
+## 🛠️ Project Overview
 
-This rubric represents **70% of the total evaluation**, while the remaining **30% will be determined by the Evaluation Committee**.
+**Letter Hunter** is an educational game designed to make learning Arabic letters and words engaging for children. Players enter their names and receive a random Arabic letter, after which they must quickly identify an object that starts with the letter's Arabic translation. The game tracks player performance across multiple rounds and ranks players based on their history compared to others. The rankings are determined by the average time taken to identify objects and the accuracy of their answers.
 
-To successfully pass this bootcamp, each participant must achieve at least **70% of the total score**.
+---
 
-| **Criteria**            | **0**                      | **1**                                | **2**                                   | **3**                                     | **4**                                      | **5**                                      |
-|--------------------------|----------------------------|--------------------------------------|----------------------------------------|------------------------------------------|------------------------------------------|------------------------------------------|
-| **Readme File**          | Not implemented           | Minimal details, lacks clarity       | Basic details, poorly formatted        | Adequate details, minor clarity issues   | Well-detailed, minor formatting issues   | Comprehensive, well-organized, error-free |
-| **Daily Reports**        | Not submitted             | Rarely submitted, vague updates, poorly organized | Inconsistent, basic updates, poorly presented | Regular submissions, some useful insights, minor organization flaws | Regular and insightful updates, organized and presentable | Consistently detailed, reflective, well-organized, and highly presentable |
-| **Final Presentation**   | Not presented             | Minimal content, poorly delivered    | Basic content, lacks engagement        | Covers key aspects, minor delivery flaws | Clear, engaging, lacks integrated demo   | Polished, engaging, includes an effective demo presentation |
-| **GitHub Structure**     | Not implemented           | Unstructured, lacks organization    | Basic structure, poorly organized      | Organized, minor structural flaws        | Well-structured, minor issues, lacks demo presentation | Fully organized, clean, includes well-documented demo presentation |
-| **Project Quality**      | Not functional            | Barely functional, major flaws       | Basic functionality, many issues       | Functional with minor issues             | High quality, minor polish required      | Exceptional quality, thoroughly polished |
-| **Deployment**           | Not deployed              | Barely functional, not usable        | Basic local deployment, lacks clarity  | Functional local deployment              | Public deployment with minor issues | Fully functional public deployment |
+## 📂 Directory Structure
 
-Good luck with your capstone project! 🎉
+```plaintext
+.
+├── static
+│   ├── css
+│   │   └── styles.css          # Styling for the game interface
+│   ├── images                  # Game-related images
+│   └── js
+│       └── script.js           # JavaScript for game logic and animations
+├── templates
+│   └── index.html              # HTML for the game interface
+├── app.py                      # Flask application file
+├── model
+│   └── yolov8n.pt              # YOLOv8n model for object detection
+├── data
+│   ├── annotated_data.csv      # Annotated data used for training
+│   ├── raw_images              # Collected dataset of images
+│   └── roboflow_annotations    # Roboflow annotations and augmentation
+├── README.md                   # Project documentation (this file)
+├── requirements.txt            # List of dependencies for the project
+└── utils
+    ├── performance_analysis.py # Functions for player performance tracking
+    └── object_translation.py   # Functions to get Arabic translations for objects
+```
+
+---
+
+## ✨ Key Features
+
+- **Personalized Gameplay**: Players enter their names and receive a unique experience.
+- **Random Letter Selection**: A new random Arabic letter is provided in each round.
+- **Object Recognition with YOLOv8n**: Players must find an object that starts with the given letter, detected using a YOLOv8n computer vision model.
+- **Performance Tracking**: Tracks the player's accuracy and response time.
+- **Player Ranking**: Ranks players based on average response time and accuracy compared to other players.
+- **Child-Friendly UI**: The interface is designed to be engaging and easy to use for children.
+
+---
+
+## 🎯 Objectives
+
+1. Make Arabic learning fun and interactive for children.
+2. Build a robust computer vision model for accurate object detection.
+3. Provide performance insights and encourage friendly competition among players.
+4. Foster language recognition and object association through play.
+
+---
+
+## 🚀 Setup Instructions
+
+1. **Clone the Repository**
+
+   ```bash
+   git clone [https://github.com/your-repository/letter-hunter.git](https://github.com/AI-bootcamp/capstone-project-letterhunter.git)
+   cd letter-hunter
+   ```
+
+2. **Set Up the Virtual Environment**
+
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows, use venv\Scripts\activate
+   ```
+
+3. **Install Dependencies**
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. **Run the Application**
+
+   Launch the Flask app:
+
+   ```bash
+   python app.py
+   ```
+
+5. **Access the Game**
+
+   Open your browser and visit:
+
+   ```plaintext
+   http://127.0.0.1:5000
+   ```
+
+---
+
+## ⚙️ How It Works
+
+1. **Data Collection and Annotation**:
+   - We collected images of common objects and annotated them using **Roboflow**.
+
+2. **Model Training**:
+   - The YOLOv8n-oiv7 model was trained on the annotated dataset to detect objects.
+
+3. **Gameplay Flow**:
+   - A player enters their name and clicks "Start Game".
+   - A random Arabic letter is displayed.
+   - The player must identify an object that starts with the letter.
+   - The object is verified using the computer vision model.
+   - The player's performance is analyzed based on:
+     - **Time taken** to correctly identify the object.
+     - **Accuracy** of object-letter matches.
+
+4. **Performance Analysis**:
+   - The system tracks the player’s performance history and compares it to other players.
+   - Ranks are updated based on:
+     - Average time taken to identify objects.
+     - Percentage of correct answers.
+
+---
+
+## 📸 Screenshots
+
+![image](https://github.com/user-attachments/assets/d5dc6a79-78ae-4353-bdb4-478868e931a2)
+
+
+---
+
+## 🔮 Future Enhancements
+
+- **Additional Language Support**: Add translations for more languages, more levels.
+- **Expanded Dataset**: Collect more annotated data for improved model performance, finetuning the model.
+- **Two-Player Mode**: Add real-time challenges where two players compete to identify objects matching their Arabic letters.
+- **Mobile App**: Create a mobile-friendly version for easier access.
+
+---
+
+## 👥 Team
+
+This project was developed by a dedicated team of AI and software enthusiasts:
+
+1. **Shaden**: Data collection and Software engineering and Ideation and Model training.
+2. **Salwa**: Data collection and Data proccesing and Analysis and UI/UX design.
+3. **Mohammed**: Frontend design and software engineering and Structure and Analysis.
+4. **Abdulkarim**: Frontend design and software engineering and Logic Design, Problem Solving.
+
+---
+
+## 📜 Credits
+
+This project was inspired by educational initiatives promoting fun language learning. Special thanks to **Roboflow** for providing an intuitive annotation platform and the open-source **YOLOv8** model for object detection.
