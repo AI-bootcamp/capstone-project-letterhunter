@@ -82,28 +82,6 @@ def analyze_player(player_name):
 
     return filtered_letters
 
-print(analyze_player('شادن'))
-
-
-def generate_dashboard_data():
-    try:
-        # Load the game history
-        df = pd.read_excel('game_history.xlsx')
-    except FileNotFoundError:
-        return pd.DataFrame(columns=['Name', 'Time'])  # Return empty DataFrame if file not found
-
-    # Filter where 'Detect' is True
-    filtered_df = df[df['Detect'] == True]
-
-    # Calculate the average time for each player
-    average_time_df = filtered_df.groupby('Name', as_index=False)['Time'].mean()
-
-    # Sort by average time
-    sorted_df = average_time_df.sort_values(by='Time', ascending=True)
-
-    # Return the top 5 players
-    return sorted_df.head(5)
-
 def generate_frames():
     global found, start_time, camera, timer_duration
     if not camera.isOpened():
@@ -124,35 +102,45 @@ def generate_frames():
 
         # YOLO Detection
         results = model.predict(source=frame, verbose=False)
-        annotated_frame = results[0].plot()
 
-        # Check for target classes
+        # Iterate through each detection result
         for result in results:
             for box in result.boxes:
+                # Extract bounding box coordinates
+                x1, y1, x2, y2 = box.xyxy[0]  # Assuming box.xyxy is a tensor
+                x1, y1, x2, y2 = int(x1), int(y1), int(x2), int(y2)
+
+                # Draw the bounding box on the frame (without label)
+                cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 0, 0), 2)  # Green box with thickness 2
+
+                # Check for target classes
                 class_id = int(box.cls)
                 class_name = result.names[class_id].lower()
                 if class_name in target_classes:
                     found = True
                     # Use the already calculated elapsed_time
                     update_history(player_name, selected_letter, round(elapsed_time, 2))
-                    break
+                    break  # Exit the loop if target is found
+
+            if found:
+                break  # Exit the outer loop if target is found
 
         # Show "Correct!!" if target is found
         if found:
-            cv2.putText(annotated_frame, "Correct!!", (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
+            cv2.putText(frame, "Correct!!", (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
 
         # Display remaining time
-        cv2.putText(annotated_frame, f"Time Left: {remaining_time}s", (50, 100), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
+        cv2.putText(frame, f"Time Left: {remaining_time}s", (50, 100), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 0), 2)
 
-        # If time is up and target not found, display "Time's Up" and stop the camera
+        # If time is up and target not found, display "Fail!!" and stop the camera
         if remaining_time == 0:
             if not found:
                 update_history(player_name, selected_letter, 0)
-                cv2.putText(annotated_frame, "Fail!!", (50, 150), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
+                cv2.putText(frame, "Fail!!", (50, 150), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 0), 2)
             break
 
         # Encode frame for streaming
-        _, buffer = cv2.imencode('.jpg', annotated_frame)
+        _, buffer = cv2.imencode('.jpg', frame)
         frame = buffer.tobytes()
         yield (b'--frame\r\n'
                b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
@@ -181,12 +169,6 @@ def game():
     get_player_name()
     return render_template('Game.html', letter=selected_letter, timer=timer_duration, player_name=player_name)
 
-@app.route('/Dashboard')
-def dashboard():
-    # Generate the dashboard data
-    top_players_df = generate_dashboard_data()
-    return render_template('Dashboard.html', top_players=top_players_df.to_dict(orient='records'))
-
 @app.route('/video_feed')
 def video_feed():
     initialize_resources()
@@ -203,47 +185,34 @@ def update_timer():
 
 @app.route('/results')
 def results():
+    """Render the results page."""
     global player_name
-    # Load the Excel file
-    try:
-        history_df = pd.read_excel('history.xlsx')
-    except FileNotFoundError:
-        history_df = pd.DataFrame(columns=['Name', 'Letter', 'Detect', 'Time'])
-
-    # Rename columns to standard format
-    history_df.rename(
-        columns={
-            "Name": "name",
-            "Letter": "letter",
-            "Detect": "detect",
-            "Time": "time"
-        },
-        inplace=True,
-    )
-
-    # Get the current user's name from the request
     user_name = player_name
-
-    # Filter the data by user name
-    filtered_df = history_df[history_df['name'] == user_name]
-
-    # Extract the required attributes
-    letter_counts = filtered_df['letter'].value_counts().to_dict()
-    correct_count = filtered_df[filtered_df['detect'] == True].shape[0]
-
-    # Analyze the player's mistakes
+    history_df = pd.read_excel('history.xlsx')
+    filtered_df = history_df[history_df['Name'] == user_name]
+    
+    if filtered_df.empty:
+        return render_template('Results.html', user_name=user_name, results=[], error="لا توجد بيانات لهذا المستخدم.")
+    
+    # Count the occurrences of each letter
+    letter_counts = filtered_df['Letter'].value_counts().to_dict()
+    
+    # Calculate the number of times each letter was correctly detected (Detect = TRUE)
+    correct_counts = filtered_df[filtered_df['Detect'] == True].groupby('Letter').size().to_dict()
+    
+    # Prepare the results
+    results = []
+    for letter, count in letter_counts.items():
+        correct_count = correct_counts.get(letter, 0)  # Get the correct count for the letter, default to 0 if not found
+        results.append((letter, count, correct_count))
+    
     player_mistakes = analyze_player(user_name)
-
-    # Prepare data for rendering
-    results = [(letter, count, correct_count) for letter, count in letter_counts.items()]
-
+    
     return render_template(
         'Results.html',
         user_name=user_name,
         results=results,
-        player_mistakes=player_mistakes
-    )
-
+        player_mistakes=player_mistakes)
 
 
 @app.route('/leaderboard')
