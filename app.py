@@ -115,13 +115,13 @@ def generate_frames():
         if start_time is None:
             start_time = time.time()
 
+        # Calculate elapsed time once per frame
+        elapsed_time = time.time() - start_time if start_time is not None else 0
+        remaining_time = max(0, timer_duration - int(elapsed_time))
+
         # YOLO Detection
         results = model.predict(source=frame, verbose=False)
         annotated_frame = results[0].plot()
-
-        # Timer countdown
-        elapsed_time = time.time() - start_time if start_time is not None else 0
-        remaining_time = max(0, timer_duration - int(elapsed_time))
 
         # Check for target classes
         for result in results:
@@ -130,8 +130,8 @@ def generate_frames():
                 class_name = result.names[class_id].lower()
                 if class_name in target_classes:
                     found = True
-                    elapsed_time = round(time.time() - start_time, 2)
-                    update_history(player_name, selected_letter, elapsed_time)
+                    # Use the already calculated elapsed_time
+                    update_history(player_name, selected_letter, round(elapsed_time, 2))
                     break
 
         # Show "Correct!!" if target is found
@@ -147,7 +147,6 @@ def generate_frames():
                 update_history(player_name, selected_letter, 0)
                 cv2.putText(annotated_frame, "Fail!!", (50, 150), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
             break
-        
 
         # Encode frame for streaming
         _, buffer = cv2.imencode('.jpg', annotated_frame)
