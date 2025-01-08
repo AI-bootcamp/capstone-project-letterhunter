@@ -214,5 +214,38 @@ def results():
     return render_template('Results.html', user_name=user_name, results=results)
 
 
+@app.route('/leaderboard')
+def leaderboard():
+    # Load the Excel file
+    history_df = pd.read_excel('history.xlsx')
+
+    # Rename columns to standard format
+    history_df.rename(
+        columns={
+            "Name": "name",
+            "letters": "letters",
+            "Detect": "detect",
+            "Time": "time"
+        },
+        inplace=True,
+    )
+
+    # Calculate the average time for each name, excluding averages of 0.0
+    leaderboard_data = (
+        history_df.groupby('name')['time']
+        .mean()
+        .reset_index()
+        .sort_values(by='time', ascending=True)
+    )
+
+    # Exclude names with an average time of 0.0
+    leaderboard_data = leaderboard_data[leaderboard_data['time'] > 0.0]
+
+    # Convert the result to a list of tuples for rendering
+    leaderboard = list(leaderboard_data.itertuples(index=False, name=None))
+
+    return render_template('leaderboard.html', leaderboard=leaderboard)
+
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=502, debug=True)

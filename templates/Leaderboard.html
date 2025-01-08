@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>قائمة المتصدرين</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="landing-page">
+        <div class="form-section">
+            <h2>قائمة المتصدرين</h2>
+            <table class="leaderboard-table">
+                <thead>
+                    <tr>
+                        <th>الاسم</th>
+                        <th>أسرع وقت</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for name, avg_time in leaderboard %}
+                    <tr>
+                        <td>{{ name }}</td>
+                        <td>{{ avg_time }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <div class="button-container">
+                <button onclick="window.location.href='/Game'" class="start-button">العودة إلى اللعبة</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
