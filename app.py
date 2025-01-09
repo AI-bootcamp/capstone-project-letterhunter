@@ -12,8 +12,8 @@ vocab_df = pd.read_excel('Vocab.xlsx')
 vocab_dict = dict(zip(vocab_df['Arabic Letter'], vocab_df['Objects in English']))
 weights={'ا': 3.626800535671137, 'س': 2.561040452199646, 'ش': 1.1115987744649718, 'ح': 1.4955451544254066,
           'م': 4.387991868972226, 'ج': 0.6451356060606059, 'ه': 0.6451356060606059, 'ت': 1.6401356060606058, 
-          'ك': 2.4483051849028694, 'ل': 1.2412106522609043, 'ق': 1.065395422828659, 'ص': 0.8406952688172042, 
-          'ب': 1.6602639784946236, 'ن': 2.6880236307608127, 'ع': 1.360584329403095, 'ف': 3.1039120937662927, 
+          'ك': 2.4483051849028694, 'ل': 1.2412106522609043, 'ق': 0, 'ص': 0.8406952688172042, 
+          'ب': 0, 'ن': 2.6880236307608127, 'ع': 1.360584329403095, 'ف': 3.1039120937662927, 
           'د': 1.3219472469036115, 'و': 0.5254632653061224, 'ز': 0.7644755825242718, 'ط': 0.23334381408065616}
 
 
@@ -26,7 +26,7 @@ selected_letter = None
 target_classes = []
 found = False
 start_time = None
-timer_duration = 10  # 10 seconds timer
+timer_duration = 30  # 10 seconds timer
 player_name = "Unknown"  # Default player name
 
 def initialize_resources():
@@ -120,7 +120,7 @@ def generate_frames():
                 if class_name in target_classes:
                     found = True
                     # Use the already calculated elapsed_time
-                    update_history(player_name, selected_letter, round(elapsed_time, 2))
+                    update_history(player_name, selected_letter, (timer_duration - round(elapsed_time, 2)))
                     break  # Exit the loop if target is found
 
             if found:
@@ -242,6 +242,8 @@ def leaderboard():
 
     # Exclude names with an average time of 0.0
     leaderboard_data = leaderboard_data[leaderboard_data['time'] > 0.0]
+    leaderboard_data['time'] = leaderboard_data['time'].round(2)  
+    leaderboard_data = leaderboard_data.head(5)
 
     # Convert the result to a list of tuples for rendering
     leaderboard = list(leaderboard_data.itertuples(index=False, name=None))
