@@ -139,10 +139,10 @@
 
 This project was developed by a dedicated team of AI and software enthusiasts:
 
-1. **Shaden**: Data collection and Software engineering and Ideation and Model training.
-2. **Salwa**: Data collection and Data proccesing and Analysis and UI/UX design.
-3. **Mohammed**: Frontend design and software engineering and Structure and Analysis.
-4. **Abdulkarim**: Frontend design and software engineering and Logic Design, Problem Solving.
+1. **Shaden**: Data collection, Software engineering, Ideation, and Model training.
+2. **Salwa**: Data collection, Data proccesing, software engineering, and UI/UX design.
+3. **Mohammed**: Frontend design, software engineering, Structure, and Analysis.
+4. **Abdulkarim**: Frontend design, software engineering, Logic Design, and Problem Solving.
 
 ---
 
