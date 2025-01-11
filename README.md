@@ -11,25 +11,23 @@
 ```plaintext
 .
 ├── static
-│   ├── css
-│   │   └── styles.css          # Styling for the game interface
-│   ├── images                  # Game-related images
-│   └── js
-│       └── script.js           # JavaScript for game logic and animations
+│   ├── images_icon             # Game-related images
+│   ├── font                    # Font for the game interface
+│   ├── styles.css              # Styling for the game interface
+│   └── script.js               # JavaScript for game logic and animations
 ├── templates
-│   └── index.html              # HTML for the game interface
-├── app.py                      # Flask application file
+│   ├── Index.html              # HTML for the homepage interface
+│   ├── Game.html               # HTML for the game interface
+│   ├── Results.html            # HTML for player results interface
+│   └── Leaderboard.html        # HTML for leaderboard interface
 ├── model
-│   └── yolov8n.pt              # YOLOv8n model for object detection
+│   └── Model.pt                # CV Model for object detection
 ├── data
-│   ├── annotated_data.csv      # Annotated data used for training
-│   ├── raw_images              # Collected dataset of images
-│   └── roboflow_annotations    # Roboflow annotations and augmentation
+│   ├── objects.xlsx            # Letters that connected with model objects and synonyms
+│   └── history.xlsx            # History for each game
+├── app.py                      # Flask application file
 ├── README.md                   # Project documentation (this file)
-├── requirements.txt            # List of dependencies for the project
-└── utils
-    ├── performance_analysis.py # Functions for player performance tracking
-    └── object_translation.py   # Functions to get Arabic translations for objects
+└── requirements.txt            # List of dependencies for the project
 ```
 
 ---

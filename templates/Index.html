@@ -29,13 +29,11 @@
 
         startButton.addEventListener("click", function () {
             if (nameInput.value.trim() === "") {
-                // Show error message
                 errorMessage.style.display = "block";
                 setTimeout(() => {
                     errorMessage.style.display = "none";
-                }, 3000); // Hide after 3 seconds
+                }, 3000);
             } else {
-                // Redirect to the game
                 window.location.href = "/Game?name=" + encodeURIComponent(nameInput.value);
             }
         });
