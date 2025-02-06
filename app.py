@@ -17,7 +17,7 @@ weights={'ا': 3.626800535671137, 'س': 2.561040452199646, 'ش': 1.1115987744649
 
 
 got_name = False
-model = YOLO('model/Model.pt')
+model = YOLO('model/Model_Final.pt')
 
 selected_letter = None
 target_classes = []
