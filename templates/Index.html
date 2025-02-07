@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>صائد الحروف</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='static/images_icon/صائد الحروف11.jpg') }}" type="image/x-icon">
+</head>
+<body>
+    <div class="landing-page">
+        <div class="image-section">
+            <img src="{{ url_for('static', filename='images_icon/صائد الأحرف (2).png') }}" alt="صائد الحروف" class="game-image">
+        </div>
+        <div class="form-section">
+            <h2>مرحباً بك في صائد الحروف</h2>
+            <p>أدخل اسمك لبدء اللعبة واكتشاف الأشياء التي تبدأ بالحروف!</p>
+            <form id="gameForm">
+                <input type="text" id="nameInput" name="name" placeholder="أدخل اسمك" required>
+                <button type="button" id="startButton" class="start-button">ابدأ</button>
+            </form>
+            <div id="errorMessage" class="error-message">نسيت ادخال اسمك أيها القرصان الصغير !</div>
+        </div>
+    </div>
+    <script>
+        const startButton = document.getElementById("startButton");
+        const nameInput = document.getElementById("nameInput");
+        const errorMessage = document.getElementById("errorMessage");
+
+        startButton.addEventListener("click", function () {
+            if (nameInput.value.trim() === "") {
+                errorMessage.style.display = "block";
+                setTimeout(() => {
+                    errorMessage.style.display = "none";
+                }, 3000);
+            } else {
+                window.location.href = "/Game?name=" + encodeURIComponent(nameInput.value);
+            }
+        });
+    </script>
+</body>
+</html>
