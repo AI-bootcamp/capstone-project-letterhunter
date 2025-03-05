@@ -146,7 +146,7 @@ def get_player_name():
         got_name = True
 
 
-@app.route('/')
+@app.route('/Index')
 def index():
     global got_name
     got_name = False
@@ -224,6 +224,12 @@ def leaderboard():
     leaderboard = list(leaderboard_data.itertuples(index=False, name=None))
 
     return render_template('leaderboard.html', leaderboard=leaderboard)
+
+@app.route('/')
+def welcome():
+    return render_template('welcome.html')
+
+
 
 
 if __name__ == "__main__":

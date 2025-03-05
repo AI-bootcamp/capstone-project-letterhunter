@@ -5,14 +5,14 @@ body {
     font-family: 'Tajawal', sans-serif;
     background: linear-gradient(-45deg, blue, #ffe1fd, #fbe7b2, #ffd1dc);
     background-size: 400% 400%;
-    animation: gradient 30s ease infinite;
+    animation: none; /* أوقفنا الحركة هنا */
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-/* Keyframe Animation */
+/* Keyframe Animation (لم يعد مستخدماً لأننا أوقفنا الـ animation) */
 @keyframes gradient {
     0% {
         background-position: 0% 50%;
@@ -36,7 +36,6 @@ body {
     max-width: 1000px;
     width: 95%;
     height: 80%;
-    
 }
 
 /* Left Image Section */
@@ -54,7 +53,6 @@ body {
     height: 100%;
     border-radius: 20px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-
 }
 
 .game-title {
@@ -96,49 +94,49 @@ body {
 
 /* Input Field */
 input[type="text"] {
-    padding: 12px 20px; /* Adjusted padding for a better fit */
-    border: 2px solid #000; /* Black border for the outline */
-    border-radius: 30px; /* Rounded corners */
-    outline: none; /* Removes default browser outline */
-    font-size: 18px; /* Larger font size */
-    width: 80%; /* Dynamic width */
-    max-width: 350px; /* Wider field */
-    margin-bottom: 20px; /* Space below */
-    background: #fff; /* White background */
-    color: #000; /* Black text color */
-    text-align: center; /* Centers the input text */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-    transition: all 0.3s ease-in-out; /* Smooth transitions */
+    padding: 12px 20px;
+    border: 2px solid #000;
+    border-radius: 30px;
+    outline: none;
+    font-size: 18px;
+    width: 80%;
+    max-width: 350px;
+    margin-bottom: 20px;
+    background: #fff;
+    color: #000;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
 }
 
 input[type="text"]:focus {
-    border-color: #ff79b0; /* Pink border on focus */
-    box-shadow: 0 0 10px rgba(255, 121, 176, 0.6); /* Glowing effect */
+    border-color: #ff79b0;
+    box-shadow: 0 0 10px rgba(255, 121, 176, 0.6);
 }
 
 /* Start Button */
 .start-button {
-    padding: 10px 80px; /* Adjusted padding for a larger, centered button */
-    font-size: 20px; /* Larger font size */
+    padding: 10px 80px;
+    font-size: 20px;
     font-weight: bold;
-    color: #fff; /* White text */
-    background: linear-gradient(to right, #ff79b0, #ffacd5); /* Pink gradient */
+    color: #fff;
+    background: linear-gradient(to right, #ff79b0, #ffacd5);
     border: none;
-    border-radius: 30px; /* Fully rounded corners */
+    border-radius: 30px;
     cursor: pointer;
-    box-shadow: 0 4px 10px rgba(255, 121, 176, 0.4); /* Subtle shadow */
+    box-shadow: 0 4px 10px rgba(255, 121, 176, 0.4);
     transition: all 0.3s ease-in-out;
-    display: block; /* Ensures it behaves as a block-level element */
-    margin: 0 auto; /* Centers the button horizontally */
+    display: block;
+    margin: 0 auto;
 }
 
 .start-button:hover {
-    transform: scale(1.05); /* Slight zoom on hover */
-    box-shadow: 0 6px 12px rgba(255, 121, 176, 0.6); /* Enhanced shadow */
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(255, 121, 176, 0.6);
 }
 
 .start-button:active {
-    transform: scale(0.95); /* Slight shrink on click */
+    transform: scale(0.95);
 }
 
 /* Form Section Alignment */
@@ -147,9 +145,8 @@ input[type="text"]:focus {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 20px; /* Adds uniform spacing between input and button */
+    gap: 20px;
 }
-
 
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -157,12 +154,10 @@ input[type="text"]:focus {
         flex-direction: column;
         height: 100%;
     }
-
     .image-section, .form-section {
         flex: unset;
         width: 100%;
     }
-
     .game-image {
         width: 100%;
     }
@@ -170,9 +165,9 @@ input[type="text"]:focus {
 
 /* Error Message Styles */
 .error-message {
-    display: none; /* Hidden by default */
-    background-color: rgba(255, 79, 79, 0.8); /* Light red background */
-    color: #fff; /* White text color */
+    display: none;
+    background-color: rgba(255, 79, 79, 0.8);
+    color: #fff;
     font-size: 16px;
     font-weight: bold;
     padding: 10px 20px;
@@ -180,7 +175,7 @@ input[type="text"]:focus {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     margin-top: 20px;
     text-align: center;
-    animation: shake 0.5s ease; /* Add a fun shake animation */
+    animation: shake 0.5s ease;
 }
 
 /* Shake Animation */
@@ -208,9 +203,9 @@ html, body {
     font-family: 'Tajawal', sans-serif;
     background: linear-gradient(-45deg, blue, #ffe1fd, #fbe7b2, #ffd1dc);
     background-size: 400% 400%;
-    animation: gradient 30s ease infinite;
+    animation: none; /* أوقفنا الحركة هنا */
     height: 100%;
-    overflow-y: auto; /* Allow vertical scrolling */
+    overflow-y: auto;
 }
 
 body {
@@ -252,7 +247,7 @@ header p {
     padding: 5px;
     max-width: 1000px;
     width: 100%;
-    margin-bottom: 10px; /* Add spacing at the bottom */
+    margin-bottom: 10px;
     text-align: center;
 }
 
@@ -343,17 +338,14 @@ header p {
         width: 95%;
         padding: 20px;
     }
-
     #selectedLetterBox {
         font-size: 24px;
     }
-
     #restartGameBtn {
         font-size: 18px;
         padding: 10px 30px;
     }
 }
-
 
 /* Results Button */
 .show-results-button {
@@ -375,8 +367,9 @@ header p {
     transform: scale(1.05);
     box-shadow: 0 6px 12px rgba(76, 139, 245, 0.6);
 }
- /* results */
- .results-container {
+
+/* results */
+.results-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -402,7 +395,8 @@ table {
     border-collapse: collapse;
 }
 
-table th, table td {
+table th,
+table td {
     padding: 10px;
     border: 1px solid #ccc;
     text-align: center;
@@ -434,8 +428,8 @@ table td {
 }
 
 .leaderboard-button:hover {
-    transform: scale(1.05); /* Slight zoom on hover */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4); /* Enhanced shadow */
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
 }
 
 .leaderboard-button-container {
@@ -445,20 +439,21 @@ table td {
 
 /* Leaderboaed page */
 
-/* General Styles */
+/* نوقف الحركة أيضاً هنا */
 body {
     margin: 0;
     padding: 0;
     font-family: 'Tajawal', sans-serif;
     background: linear-gradient(-45deg, #ffccff, #ffebcc, #ffeecc, #ffe6e6);
     background-size: 400% 400%;
-    animation: gradient 30s ease infinite;
+    animation: none; /* أوقفنا الحركة هنا */
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
 }
 
+/* نترك تعريف الـ keyframes دون استخدامه */
 @keyframes gradient {
     0% {
         background-position: 0% 50%;
@@ -595,11 +590,10 @@ body {
     transform: scale(0.95);
 }
 
-
 /* analyzed_player string print design */
 .mistakes-analysis {
     margin-top: 2px;
-    margin-bottom:2px;
+    margin-bottom: 2px;
     padding: 2px;
     font-weight: bold;
     border-radius: 10px;
@@ -609,4 +603,153 @@ body {
 
 .mistakes span.mistakes {
     font-weight: bold;
+}
+
+/* Reset & Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Tajawal', sans-serif;
+    /*
+    background-color: #ffe9d6; 
+    background-image:
+      url("{{ url_for('static', filename='images_icon/tuwaiq_left.png') }}"),
+      url("{{ url_for('static', filename='images_icon/tuwaiq_right.png') }}");
+    background-position: left top, right top;
+    background-repeat: repeat-y, repeat-y; 
+    background-size: 200px auto, 200px auto;
+    */
+}
+
+/* Main Card: center "white box" for content */
+.main-card {
+    max-width: 800px;
+    margin: 40px auto;
+    background: #ffffff;
+    padding: 20px 30px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+/* Logo */
+.centered-logo {
+    max-width: 150px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    box-shadow: 1px 1px 6px rgba(0,0,0,0.1);
+}
+
+/* Headings/Subtitles */
+h1 {
+    font-size: 28px;
+    margin-bottom: 8px;
+    color: #1d3557;
+}
+.subtitle {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 20px;
+}
+h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #c840c5;
+    margin-bottom: 15px;
+}
+
+/* Info Box */
+.info-box {
+    background: #fdfdfd;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 15px 20px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    margin: 0 auto 20px auto;
+    display: inline-block;
+}
+.info-box p {
+    font-size: 14px;
+    color: #444;
+    margin: 5px 0;
+}
+.info-box strong {
+    color: #7a46dc;
+}
+
+/* Button */
+.action-section {
+    margin-bottom: 30px;
+}
+.start-button {
+    padding: 10px 24px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    background: #c222df;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background 0.3s, box-shadow 0.3s;
+}
+.start-button:hover {
+    background: #9c2dd7;
+    box-shadow: 1px 1px 6px rgba(0,0,0,0.15);
+}
+
+/* Footer (Developers) */
+.footer {
+    margin-top: 20px;
+    .developers-heading {
+        text-align: center;
+        font-size: 18px;
+        font-weight: 700;
+        color: #1d3557;
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+}
+.developers-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+.developer-card {
+    background: #f9f9f9;
+    border: 1px solid #e2e2e2;
+    border-radius: 8px;
+    padding: 10px 15px;
+    width: 130px;
+    box-shadow: 1px 1px 6px rgba(0,0,0,0.1);
+}
+.developer-name {
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #1d3557;
+}
+.developer-link {
+    color: #7746e2;
+    text-decoration: none;
+}
+.developer-link:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Tweaks for smaller screens */
+@media (max-width: 600px) {
+    .main-card {
+        margin: 20px;
+        padding: 15px;
+    }
+    .info-box {
+        padding: 10px;
+    }
+    .start-button {
+        width: 100%;
+        max-width: 200px;
+    }
 }
