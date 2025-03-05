@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>معسكر بناء وتطوير نماذج الذكاء الاصطناعي</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  <link
+    rel="icon"
+    href="{{ url_for('static', filename='images_icon/صائد الحروف11.jpg') }}"
+    type="image/x-icon"
+  />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap"
+    rel="stylesheet"
+  />
+</head>
+<body>
+
+  <!-- Main container: white card in the center -->
+  <div class="main-card">
+
+    <!-- Logo -->
+    <img 
+      src="{{ url_for('static', filename='images_icon/academy.jpg') }}" 
+      alt="Tuwaiq Academy Logo" 
+      class="centered-logo"
+    >
+
+    <!-- Title & Subtitle -->
+    <h1>مرحباً بكم في صائد الحروف</h1>
+    <p class="subtitle">
+      طريق نحو المعرفة و التعلم الممتع باستخدام الذكاء الاصطناعي
+    </p>
+
+    <!-- Info Section -->
+    <h2>تفاصيل المعسكر</h2>
+    <div class="info-box">
+      <p><strong>اسم المعسكر :</strong> بناء و تطوير نماذج الذكاء الاصطناعي</p>
+      <p><strong>المدربين:</strong> أ. راكان المطيري | أ. رياض الغامدي | أ. عبدالله بن طالب</p>
+    </div>
+
+    <!-- Button -->
+    <div class="action-section">
+      <a href="{{ url_for('index') }}">
+        <button class="start-button">انتقل للعبة</button>
+      </a>
+    </div>
+
+    <!-- هنا نضع عنوان مطورين المشروع -->
+    <h3 class="developers-heading">مطورين المشروع</h3>
+
+    <!-- Footer (Developers) -->
+    <footer class="footer">
+      <!-- حاوية بطاقات المطورين -->
+      <div class="developers-container">
+        <!-- Developer 1 -->
+        <div class="developer-card">
+          <div class="developer-name">عبدالكريم المالكي</div>
+          <a 
+            href="https://www.linkedin.com/in/abdulkarimalmalki/" 
+            target="_blank" 
+            class="developer-link"
+          >
+            LinkedIn
+          </a>
+        </div>
+        <!-- Developer 2 -->
+        <div class="developer-card">
+          <div class="developer-name">محمد الدوسري</div>
+          <a 
+            href=https://www.linkedin.com/in/mohammed-aldawsari-8ab71624b/ 
+            target="_blank" 
+            class="developer-link"
+          >
+            LinkedIn
+          </a>
+        </div>
+        <!-- Developer 3 -->
+        <div class="developer-card">
+          <div class="developer-name">شادن الوقيان</div>
+          <a 
+            href=https://www.linkedin.com/in/shaden-aldossari-8a33552b5/ 
+            target="_blank" 
+            class="developer-link"
+          >
+            LinkedIn
+          </a>
+        </div>
+        <!-- Developer 4 -->
+        <div class="developer-card">
+          <div class="developer-name">سلوى الشمراني</div>
+          <a 
+            href=https://www.linkedin.com/in/salwa-alshamrani-a37419236/
+            target="_blank" 
+            class="developer-link"
+          >
+            LinkedIn
+          </a>
+        </div>
+      </div><!-- /developers-container -->
+    </footer><!-- /footer -->
+
+  </div> <!-- /main-card -->
+
+</body>
+</html>
