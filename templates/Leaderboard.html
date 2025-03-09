@@ -27,8 +27,9 @@
                 </tbody>
             </table>
             <div class="button-container">
-                <button onclick="window.location.href=('/Index')" class="start-button">العودة إلى اللعبة</button>
-            </div>
+                <a href="{{ url_for('welcome') }}">
+                <button  class="start-button">العودة إلى اللعبة</button>
+            </a></div>
         </div>
     </div>
 </body>

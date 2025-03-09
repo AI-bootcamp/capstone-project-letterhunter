@@ -17,91 +17,80 @@
 </head>
 <body>
 
-  <!-- Main container: white card in the center -->
-  <div class="main-card">
+  <!-- Main container: Divided into Two Columns -->
+  <div class="main-container">
 
-    <!-- Logo -->
-    <img 
-      src="{{ url_for('static', filename='images_icon/academy.jpg') }}" 
-      alt="Tuwaiq Academy Logo" 
-      class="centered-logo"
-    >
+    <!-- Left Section: Bootcamp & Developers -->
+    <div class="bootcamp-section">
+      <!-- Logo -->
+      <img 
+        src="{{ url_for('static', filename='images_icon/academy.jpg') }}" 
+        alt="Tuwaiq Academy Logo" 
+        class="centered-logo"
+      >
 
-    <!-- Title & Subtitle -->
-    <h1>مرحباً بكم في صائد الحروف</h1>
-    <p class="subtitle">
-      طريق نحو المعرفة و التعلم الممتع باستخدام الذكاء الاصطناعي
-    </p>
+      <!-- Title & Subtitle -->
+      <h1>مرحباً بكم في صائد الحروف</h1>
+      <p class="subtitle">
+        طريق نحو المعرفة و التعلم الممتع باستخدام الذكاء الاصطناعي
+      </p>
 
-    <!-- Info Section -->
-    <h2>تفاصيل المعسكر</h2>
-    <div class="info-box">
-      <p><strong>اسم المعسكر :</strong> بناء و تطوير نماذج الذكاء الاصطناعي</p>
-      <p><strong>المدربين:</strong> أ. راكان المطيري | أ. رياض الغامدي | أ. عبدالله بن طالب</p>
-    </div>
+      <!-- Info Section -->
+      <h2>تفاصيل المعسكر</h2>
+      <div class="info-box">
+        <p><strong>اسم المعسكر :</strong> بناء و تطوير نماذج الذكاء الاصطناعي</p>
+        <p><strong>المدربين:</strong> أ. راكان المطيري | أ. رياض الغامدي | أ. عبدالله بن طالب</p>
+      </div>
 
-    <!-- Button -->
-    <div class="action-section">
-      <a href="{{ url_for('index') }}">
-        <button class="start-button">انتقل للعبة</button>
-      </a>
-    </div>
-
-    <!-- هنا نضع عنوان مطورين المشروع -->
-    <h3 class="developers-heading">مطورين المشروع</h3>
-
-    <!-- Footer (Developers) -->
-    <footer class="footer">
-      <!-- حاوية بطاقات المطورين -->
+      <!-- Developers Section -->
+      <h3 class="developers-heading">مطورين المشروع</h3>
       <div class="developers-container">
-        <!-- Developer 1 -->
         <div class="developer-card">
           <div class="developer-name">عبدالكريم المالكي</div>
-          <a 
-            href="https://www.linkedin.com/in/abdulkarimalmalki/" 
-            target="_blank" 
-            class="developer-link"
-          >
-            LinkedIn
-          </a>
+          <a href="https://www.linkedin.com/in/abdulkarimalmalki/" target="_blank" class="developer-link">LinkedIn</a>
         </div>
-        <!-- Developer 2 -->
         <div class="developer-card">
           <div class="developer-name">محمد الدوسري</div>
-          <a 
-            href=https://www.linkedin.com/in/mohammed-aldawsari-8ab71624b/ 
-            target="_blank" 
-            class="developer-link"
-          >
-            LinkedIn
-          </a>
+          <a href="https://www.linkedin.com/in/mohammed-aldawsari-8ab71624b/" target="_blank" class="developer-link">LinkedIn</a>
         </div>
-        <!-- Developer 3 -->
         <div class="developer-card">
           <div class="developer-name">شادن الوقيان</div>
-          <a 
-            href=https://www.linkedin.com/in/shaden-aldossari-8a33552b5/ 
-            target="_blank" 
-            class="developer-link"
-          >
-            LinkedIn
-          </a>
+          <a href="https://www.linkedin.com/in/shaden-aldossari-8a33552b5/" target="_blank" class="developer-link">LinkedIn</a>
         </div>
-        <!-- Developer 4 -->
         <div class="developer-card">
           <div class="developer-name">سلوى الشمراني</div>
-          <a 
-            href=https://www.linkedin.com/in/salwa-alshamrani-a37419236/
-            target="_blank" 
-            class="developer-link"
-          >
-            LinkedIn
-          </a>
+          <a href="https://www.linkedin.com/in/salwa-alshamrani-a37419236/" target="_blank" class="developer-link">LinkedIn</a>
         </div>
-      </div><!-- /developers-container -->
-    </footer><!-- /footer -->
+      </div>
+    </div>
 
-  </div> <!-- /main-card -->
+    <!-- Right Section: Game Explanation & Start Button -->
+    <div class="project-section">
+      <h1>صائد الحروف</h1> <!-- Game Title -->
+
+    <p class="game-description">
+      صائد الحروف هي لعبة تعليمية تهدف إلى مساعدة الأطفال على التعرف على الحروف من خلال استخدام الذكاء الاصطناعي.     </p>
+
+    <!-- How to Play Section -->
+    <h2>كيف تلعب اللعبة؟</h2>
+    <p class="game-instructions">
+      1- يدخل اللاعب اسمه.<br>
+      2- تبدأ اللعبة بإختيار حرف عشوائي.<br>
+      3- على اللاعب أن ينافس الوقت ويحضر شيء بالحرف المختار.<br>
+      4- ستتعرف اللعبة ما إذا كان الشيء فعلاً يبدأ بذلك الحرف.<br>
+      5- اللاعب الذي يحضر الشيء الصحيح يفوز!
+    </p>
+
+
+      <!-- Start Game Button -->
+      <div class="action-section">
+        <a href="{{ url_for('index') }}">
+          <button class="start-button">ابدأ اللعبة</button>
+        </a>
+      </div>
+    </div>
+
+  </div> <!-- /main-container -->
 
 </body>
 </html>

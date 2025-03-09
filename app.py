@@ -226,6 +226,7 @@ def leaderboard():
     return render_template('leaderboard.html', leaderboard=leaderboard)
 
 @app.route('/')
+@app.route('/welcome')
 def welcome():
     return render_template('welcome.html')
 

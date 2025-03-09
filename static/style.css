@@ -116,23 +116,25 @@ input[type="text"]:focus {
 
 /* Start Button */
 .start-button {
-    padding: 10px 80px;
-    font-size: 20px;
+    padding: 12px 50px; /* Reduced excessive padding */
+    font-size: 18px; /* Slightly smaller for better balance */
     font-weight: bold;
     color: #fff;
     background: linear-gradient(to right, #ff79b0, #ffacd5);
     border: none;
     border-radius: 30px;
     cursor: pointer;
-    box-shadow: 0 4px 10px rgba(255, 121, 176, 0.4);
+    box-shadow: 0 4px 12px rgba(255, 121, 176, 0.4);
     transition: all 0.3s ease-in-out;
     display: block;
-    margin: 0 auto;
+    margin: 20px auto 0; /* Added top margin to push it down */
+    text-align: center;
 }
 
 .start-button:hover {
     transform: scale(1.05);
     box-shadow: 0 6px 12px rgba(255, 121, 176, 0.6);
+    transform: translateY(-2px);
 }
 
 .start-button:active {
@@ -625,16 +627,66 @@ body {
 }
 
 /* Main Card: center "white box" for content */
-.main-card {
+/* .main-card { */
+/*.main-container {
+    background-image: url('/static/images_icon/background 2.PNG');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
     max-width: 800px;
     margin: 40px auto;
-    background: #ffffff;
+    /* background: #ffffff; 
     padding: 20px 30px;
     border-radius: 12px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     text-align: center;
+}*/
+
+.main-container {
+    /**background-image: url('../static/images_icon/background 2.PNG'); /* Adjusted path */
+    /*background-size: cover; /* Ensures the image covers the entire div */
+    /*background-repeat: no-repeat;
+    background-position: center;*/
+    background: #ffffff;
+    max-width: 1200px; /* Increased width for better two-column layout */
+    margin: 40px auto;
+    padding: 20px 30px;
+    
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    
+    display: flex; /* Enables two-column layout */
+    flex-direction: row; /* Ensures content is side-by-side */
+    align-items: center; /* Centers content vertically */
+    justify-content: space-between; /* Adds spacing between sections */
+    gap: 20px; /* Adds spacing between columns */
 }
 
+/* Ensure proper display inside the main container */
+.bootcamp-section, .project-section {
+    flex: 1; /* Equal width for both sections */
+    padding: 20px;
+}
+
+/* Fix background image for better responsiveness */
+@media screen and (max-width: 900px) {
+    .main-container {
+        flex-direction: column; /* Switch to vertical layout on smaller screens */
+        max-width: 100%; /* Ensure full width on small screens */
+        padding: 15px;
+    }
+}
+
+.main-container::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 10%;
+    width: 2px;
+    height: 80%;
+    background-color: rgba(0, 0, 0, 0.3);
+    transform: translateX(-50%);
+}
 /* Logo */
 .centered-logo {
     max-width: 150px;
@@ -723,7 +775,7 @@ h2 {
     border: 1px solid #e2e2e2;
     border-radius: 8px;
     padding: 10px 15px;
-    width: 130px;
+    width: 110px;
     box-shadow: 1px 1px 6px rgba(0,0,0,0.1);
 }
 .developer-name {
@@ -752,4 +804,9 @@ h2 {
         width: 100%;
         max-width: 200px;
     }
+}
+.game-instructions {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.8;
 }
