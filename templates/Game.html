@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>صائد الحروف</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='images_icon/صائد الحروف11.jpg') }}" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <h1>صائد الحروف</h1>
+        <p>اعثر على شيء يبدأ بالحرف الذي سيظهر لك! كن مستعداً للتحدي!</p>
+    </header>
+
+    <main class="game-container">
+        <section class="letter-section">
+            <h2>الحرف المختار:</h2>
+            <div id="selectedLetterBox" class="info-box">
+                <span id="selectedLetter">{{ letter }}</span>
+            </div>
+        </section>
+        <section class="capture-section">
+            <h2>التقط صورة للشيء الذي يبدأ بالحرف المحدد</h2>
+            <div class="camera-container">
+                <img src="{{ url_for('video_feed') }}" id="cameraFeed" alt="بث الكاميرا">
+            </div>
+            <div id="feedback" class="feedback-box"></div>
+        </section>
+        <section class="game-controls">
+            <button id="restartGameBtn">ابدأ جولة جديدة</button>
+            <button id="showResultsBtn" class="show-results-button">اظهر نتائجي</button>
+        </section>
+    </main>
+
+    <div class="leaderboard-button-container">
+        <button onclick="window.location.href='/leaderboard'" class="leaderboard-button">اظهر المتصدرين</button>
+    </div>    
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script>
+        document.getElementById('restartGameBtn').addEventListener('click', function() {
+            window.location.href = "{{ url_for('game') }}";
+        });
+        document.getElementById('showResultsBtn').addEventListener('click', function () {
+            window.location.href = "{{ url_for('results') }}";
+        });
+    </script>
+</body>
+</html>
